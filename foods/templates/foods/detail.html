@@ -1,0 +1,21 @@
+ {% extends 'base.html' %} {% block content %} p.solid {border-style: solid;}
+<div align="center" dir="rtl" border="2">
+
+    <br>
+    <p>
+        <img src="{{food.photo.url}}" width="50%">
+        <br>
+    </p>
+    <h1>{{food.name}}</h1>
+    <h3>اطلاعات : {{food.description}}</h3>
+    <h2>امتیاز غذا :{{food.rate}}</h2>
+    <h1>قیمت : {{food.price}} تومان</h1>
+    <a href="{%url 'reservation:reserve'%}"><button class="btn btn-common">رزرو میز</button></a>
+    <hr>
+
+
+</div>
+
+
+
+{%endblock%}

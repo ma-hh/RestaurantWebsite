@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ 	<!-- Start slides -->
+	<div id="slides" class="cover-slides">
+		<ul class="slides-container">
+			<li class="text-center">
+				<img src="{% static 'images/slider-01.jpg'%}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>به یامی فود <br>!خوش آمدید</strong></h1>
+							<p class="m-b-40">یامی فود مفتخر است که در سال 99 <br>.در میان 10 رستوران برتر ایران جای داشته است</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{%url 'reservation:reserve'%}">رزرو</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center">
+				<img src="{% static 'images/slider-02.jpg'%}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>خاص ترین پیش غذاها</strong></h1>
+							<p class="m-b-40">ارائه ی بیش از 30 نوع پیش از غذاهای محلی و بین المللی<br> 
+							!تنها در رستوران ما</p></p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{%url 'reservation:reserve'%}">رزرو</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center">
+				<img src="{% static 'images/slider-03.jpg'%}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>متنوع ترین و کامل ترین<br>!منو</strong></h1>
+							<p class="m-b-40">یامی فود با محترم شمردن اکثر سلایق<br> 
+							.پر عنوان ترین منوی رستوران در تهران را دارا می باشد</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{%url 'reservation:reserve'%}">رزرو</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="slides-navigation">
+			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	<!-- End slides -->
+	
+	<!-- Start About -->
+	<div class="about-section-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<img src="{% static 'images/about-img.jpg'%}" alt="" class="img-fluid">
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
+					<div class="inner-column">
+						<h1>خوش آمدید به<span> یامی فود </span></h1>
+						<h4>:تاریخچه</h4>
+						<p dir ="rtl">.رستوران یامی فود در سال 1384 فعالیت خود را به صورت رسمی در اولین شعبه خود آغاز نمود</p>
+						<p dir ="rtl">.هم اکنون با بیش از 25 شعبه فعال در سراسر کشور مشغول خدمت رسانی به مردم عزیزمان هستیم</p>
+						<a class="btn btn-lg btn-circle btn-outline-new-white" href="{%url 'reservation:reserve'%}">رزرو</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End About -->
+	
+	<!-- Start QT -->
+	<div class="qt-box qt-background">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 ml-auto mr-auto text-left">
+					<p class="lead " dir ="rtl">
+						"شما نمی توانید خوب فکر کنید، خوب عشق بورزید، خوب بخوابید، اگر خوب غذا نخورده باشید"
+					</p>
+					<span class="lead">ویرجینیا وولف</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End QT -->
+	
+	<!-- Start Menu -->
+	<div class="menu-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>منوی اختصاصی</h2>
+						<p>:غذاهای منتخب این ماه</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="special-menu text-center">
+						<div class="button-group filter-button-group">
+							<button class="active" data-filter="*">همه</button>
+							<button data-filter=".Breakfast">صبحانه</button>
+							<button data-filter=".food">غذاها</button>
+							<button data-filter=".dessert">دسر</button>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+			<div class="row special-list">
+			{% for food in foods  %}
+				<a href="{% url 'foods:detail' food.id %}">
+				<div class="col-lg-4 col-md-6 special-grid {{food.type_food}}">
+					<div class="gallery-single fix">
+						<img src="{{food.photo.url}}" class="img-fluid" alt="Image" style="width:350px;height:200px;">
+						<div class="why-text"
+							<h4>{{food.name}}</h4>
+							<p dir="rtl">{{food.description}}</p>
+							<h5 dir="rtl"> {{food.price}} تومان</h5>
+						</div>
+					</div>
+				</div>
+				</a>
+			{% endfor %}
+			
+				
+				
+				
+			</div>
+		</div>
+	</div>
+	<!-- End Menu -->
+	
+	<!-- Start Gallery -->
+	<div class="gallery-box">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>گالری تصاویر</h2>
+						<p>!هنر دست متبحر ترین آشپز های خاورمیانه</p>
+					</div>
+				</div>
+			</div>
+			<div class="tz-gallery">
+				<div class="row">
+					<div class="col-sm-12 col-md-4 col-lg-4">
+						<a class="lightbox" href="{% static 'images/gallery-img-01.jpg'%}">
+							<img class="img-fluid" src="{% static 'images/gallery-img-01.jpg'%}" alt="Gallery Images">
+						</a>
+					</div>
+					<div class="col-sm-6 col-md-4 col-lg-4">
+						<a class="lightbox" href="{% static 'images/gallery-img-02.jpg'%}">
+							<img class="img-fluid" src="{% static 'images/gallery-img-02.jpg'%}" alt="Gallery Images">
+						</a>
+					</div>
+					<div class="col-sm-6 col-md-4 col-lg-4">
+						<a class="lightbox" href="{% static 'images/gallery-img-03.jpg'%}">
+							<img class="img-fluid" src="{% static 'images/gallery-img-03.jpg'%}" alt="Gallery Images">
+						</a>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-4">
+						<a class="lightbox" href="{% static 'images/gallery-img-04.jpg'%}">
+							<img class="img-fluid" src="{% static 'images/gallery-img-04.jpg'%}" alt="Gallery Images">
+						</a>
+					</div>
+					<div class="col-sm-6 col-md-4 col-lg-4">
+						<a class="lightbox" href="{% static 'images/gallery-img-05.jpg'%}">
+							<img class="img-fluid" src="{% static 'images/gallery-img-05.jpg'%}" alt="Gallery Images">
+						</a>
+					</div> 
+					<div class="col-sm-6 col-md-4 col-lg-4">
+						<a class="lightbox" href="{% static 'images/gallery-img-06.jpg'%}">
+							<img class="img-fluid" src="{% static 'images/gallery-img-06.jpg'%}" alt="Gallery Images">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Gallery -->
+	
+	<!-- Start Customer Reviews -->
+	<div class="customer-reviews-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>نظرات مشتریان</h2>
+						<p>:نقطه نظرات برخی از مشتریان خوب یامی فود را مطلع شویم</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 mr-auto ml-auto text-center">
+					<div id="reviews" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner mt-4">
+							<div class="carousel-item text-center active">
+								<div class="img-box p-1 border rounded-circle m-auto">
+									<img class="d-block w-100 rounded-circle" src="{% static 'images/profile-1.jpg'%}" alt="">
+								</div>
+								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">رضا جوادی</strong></h5>
+								<h6 class="text-dark m-0">خواننده</h6>
+								<p class="m-0 pt-3">!یک رستوران عالی ، منوی با کیفیت و پرسنل بسیار خوش برخورد</p>
+							</div>
+							<div class="carousel-item text-center">
+								<div class="img-box p-1 border rounded-circle m-auto">
+									<img class="d-block w-100 rounded-circle" src="{% static 'images/profile-3.jpg'%}" alt="">
+								</div>
+								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">علی خوارزمی</strong></h5>
+								<h6 class="text-dark m-0">مدیر هولدینگ ایرانیان</h6>
+								<p class="m-0 pt-3">!همراه با چندتن از مهمانان خارجی ، پذیرایی فوق العاده از ما صورت گرفت و به جرعت بهترین جوجه کباب ایران را دارید</p>
+							</div>
+							<div class="carousel-item text-center">
+								<div class="img-box p-1 border rounded-circle m-auto">
+									<img class="d-block w-100 rounded-circle" src="{% static 'images/profile-7.jpg'%}" alt="">
+								</div>
+								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">امید نیازی</strong></h5>
+								<h6 class="text-dark m-0">کاراته کا</h6>
+								<p class="m-0 pt-3">!یک شب فوق العاده در رستوران مجلل یامی را گذراندم. غذای پیشنهادی سرآشپز درجه یک بود</p>
+							</div>
+						</div>
+						<a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
+							<i class="fa fa-angle-left" aria-hidden="true"></i>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
+							<i class="fa fa-angle-right" aria-hidden="true"></i>
+							<span class="sr-only">Next</span>
+						</a>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Customer Reviews -->
+	
+	
+	
+
+{% endblock content %}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+load
+
+{% block content %}
+
+	<!-- Start All Pages -->
+	<div class="all-page-title page-breadcrumb">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>ارتباط با ما</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End All Pages -->
+	
+	<!-- Start Contact -->
+	<div class="map-full"></div>
+	<div class="contact-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>ارتباط با ما</h2>
+						{% comment %} <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p> {% endcomment %}
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<form  method="POST">
+					{% csrf_token %}
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" class="form-control"  name="name" placeholder="نام و نام خانوادگی"  required data-error="نام و نام خانوادگیتان را وارد نمایید">
+									<div class="help-block with-errors"></div>
+								</div>                                 
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text"  class="form-control" name="email" placeholder="ایمیل" required data-error="آدرس الکترونیکی خود را وارد نمایید">
+									<div class="help-block with-errors"></div>
+								</div> 
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text"   class="form-control" placeholder="عنوان" name="title" required data-error="عنوان پیام را وارد نمایید">
+									<div class="help-block with-errors"></div>
+								</div> 
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text"   class="form-control" placeholder="پیام شما" name="message" required data-error="پیغام خود را بنویسید">
+									<div class="help-block with-errors"></div>
+								</div> 
+							</div>
+							<div class="col-md-12">
+								<div class="submit-button text-center">
+									<button class="btn btn-common"  type="submit">ارسال پیغام</button>
+									<div id="msgSubmit" class="h3 text-center hidden"></div> 
+									<div class="clearfix"></div> 
+								</div>
+							</div>
+						</div>            
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Contact -->
+	
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+	<!-- ALL JS FILES -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+	
+	<script src="js/jquery.superslides.min.js"></script>
+	<script src="js/images-loded.min.js"></script>
+	<script src="js/isotope.min.js"></script>
+	<script src="js/baguetteBox.min.js"></script>
+	<script src="js/jquery.mapify.js"></script>
+	<script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
+	<script>
+		$('.map-full').mapify({
+			points: [
+				{
+					lat: 40.7143528,
+					lng: -74.0059731,
+					marker: true,
+					title: 'Marker title',
+					infoWindow: 'Yamifood Restaurant'
+				}
+			]
+		});	
+	</script>
+</body>
+</html>
+
+{% endblock content %}
